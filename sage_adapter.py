@@ -324,14 +324,6 @@ def _cte_map(tree):
     return {c.alias_or_name: c.this for c in tree.find_all(exp.CTE)}
 
 
-def _final_select(tree):
-    if isinstance(tree, exp.Select):
-        return tree
-    if isinstance(tree, (exp.Union, exp.Except, exp.Intersect)):
-        return None
-    return tree.find(exp.Select)
-
-
 def _select_of(node):
     """The SELECT a node resolves to, or None when it is not a single SELECT.
 
