@@ -1,0 +1,2223 @@
+[
+ {
+  "stratum": "application",
+  "repo": "dbt-labs_attribution-playbook",
+  "path": "models/attribution_touches.sql",
+  "bytes": 1598,
+  "stage": "analysed",
+  "refused_all": false,
+  "dialect": "snowflake",
+  "evidence": {
+   "set_operation": false,
+   "ctes": [
+    "customer_conversions",
+    "sessions",
+    "sessions_before_conversion",
+    "with_points"
+   ],
+   "source_relations": [
+    "customer_conversions",
+    "sessions"
+   ],
+   "grain_construct": "window_dedup_or_base",
+   "grain_refusal": null,
+   "group_keys": [],
+   "joins": [
+    {
+     "relation": "customer_conversions",
+     "type": "LEFT",
+     "keys_text": [
+      "sessions.customer_id=customer_conversions.customer_id"
+     ]
+    }
+   ],
+   "join_defects": {
+    "no_condition": 0,
+    "non_equality": 0,
+    "unqualified_key": 0,
+    "cross": 0
+   },
+   "fanout_shape": {},
+   "columns_at_multiplied_grain": [],
+   "fanout_columns_hidden_by_star": false,
+   "upstream_joins_unanalysed": false,
+   "aggregate_functions": [
+    "COUNT"
+   ],
+   "window_functions": [
+    "COUNT",
+    "ROW_NUMBER"
+   ],
+   "time_columns": [
+    "converted_at",
+    "started_at"
+   ],
+   "has_time_filter": true,
+   "output_columns": [],
+   "unresolved_star": "star_over_external_relation",
+   "projects_star": true
+  },
+  "questions": {
+   "E1_grain_construct": {
+    "status": "ANSWERED",
+    "evidence": {
+     "construct": "window_dedup_or_base",
+     "group_keys": []
+    }
+   },
+   "E2_join_structure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "joins": [
+      {
+       "relation": "customer_conversions",
+       "type": "LEFT",
+       "keys_text": [
+        "sessions.customer_id=customer_conversions.customer_id"
+       ]
+      }
+     ],
+     "fanout_shape": {}
+    }
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "star_unresolved:star_over_external_relation"
+   },
+   "E4_time_columns": {
+    "status": "ANSWERED",
+    "evidence": {
+     "time_columns": [
+      "converted_at",
+      "started_at"
+     ],
+     "has_time_filter": true,
+     "window_functions": [
+      "COUNT",
+      "ROW_NUMBER"
+     ]
+    }
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "star_unresolved:star_over_external_relation"
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "dbt-labs_jaffle-shop",
+  "path": "models/staging/stg_locations.sql",
+  "bytes": 395,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "dbt-labs_jaffle-shop",
+  "path": "models/marts/products.sql",
+  "bytes": 92,
+  "stage": "analysed",
+  "refused_all": false,
+  "dialect": "snowflake",
+  "evidence": {
+   "set_operation": false,
+   "ctes": [
+    "products"
+   ],
+   "source_relations": [
+    "stg_products"
+   ],
+   "grain_construct": "base_relation",
+   "grain_refusal": null,
+   "group_keys": [],
+   "joins": [],
+   "join_defects": {
+    "no_condition": 0,
+    "non_equality": 0,
+    "unqualified_key": 0,
+    "cross": 0
+   },
+   "fanout_shape": {},
+   "columns_at_multiplied_grain": [],
+   "fanout_columns_hidden_by_star": false,
+   "upstream_joins_unanalysed": false,
+   "aggregate_functions": [],
+   "window_functions": [],
+   "time_columns": [],
+   "has_time_filter": false,
+   "output_columns": [],
+   "unresolved_star": "star_over_external_relation",
+   "projects_star": true
+  },
+  "questions": {
+   "E1_grain_construct": {
+    "status": "ANSWERED",
+    "evidence": {
+     "construct": "base_relation",
+     "group_keys": []
+    }
+   },
+   "E2_join_structure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "joins": [],
+     "fanout_shape": {}
+    }
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "star_unresolved:star_over_external_relation"
+   },
+   "E4_time_columns": {
+    "status": "ANSWERED",
+    "evidence": {
+     "time_columns": [],
+     "has_time_filter": false,
+     "window_functions": []
+    }
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "star_unresolved:star_over_external_relation"
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "dbt-labs_jaffle-shop",
+  "path": "models/marts/supplies.sql",
+  "bytes": 92,
+  "stage": "analysed",
+  "refused_all": false,
+  "dialect": "snowflake",
+  "evidence": {
+   "set_operation": false,
+   "ctes": [
+    "supplies"
+   ],
+   "source_relations": [
+    "stg_supplies"
+   ],
+   "grain_construct": "base_relation",
+   "grain_refusal": null,
+   "group_keys": [],
+   "joins": [],
+   "join_defects": {
+    "no_condition": 0,
+    "non_equality": 0,
+    "unqualified_key": 0,
+    "cross": 0
+   },
+   "fanout_shape": {},
+   "columns_at_multiplied_grain": [],
+   "fanout_columns_hidden_by_star": false,
+   "upstream_joins_unanalysed": false,
+   "aggregate_functions": [],
+   "window_functions": [],
+   "time_columns": [],
+   "has_time_filter": false,
+   "output_columns": [],
+   "unresolved_star": "star_over_external_relation",
+   "projects_star": true
+  },
+  "questions": {
+   "E1_grain_construct": {
+    "status": "ANSWERED",
+    "evidence": {
+     "construct": "base_relation",
+     "group_keys": []
+    }
+   },
+   "E2_join_structure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "joins": [],
+     "fanout_shape": {}
+    }
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "star_unresolved:star_over_external_relation"
+   },
+   "E4_time_columns": {
+    "status": "ANSWERED",
+    "evidence": {
+     "time_columns": [],
+     "has_time_filter": false,
+     "window_functions": []
+    }
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "star_unresolved:star_over_external_relation"
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "dbt-labs_mrr-playbook",
+  "path": "models/customer_churn_month.sql",
+  "bytes": 465,
+  "stage": "analysed",
+  "refused_all": false,
+  "dialect": "snowflake",
+  "evidence": {
+   "set_operation": false,
+   "ctes": [
+    "joined",
+    "mrr"
+   ],
+   "source_relations": [
+    "customer_revenue_by_month"
+   ],
+   "grain_construct": "base_relation",
+   "grain_refusal": null,
+   "group_keys": [],
+   "joins": [],
+   "join_defects": {
+    "no_condition": 0,
+    "non_equality": 0,
+    "unqualified_key": 0,
+    "cross": 0
+   },
+   "fanout_shape": {},
+   "columns_at_multiplied_grain": [],
+   "fanout_columns_hidden_by_star": false,
+   "upstream_joins_unanalysed": false,
+   "aggregate_functions": [],
+   "window_functions": [],
+   "time_columns": [],
+   "has_time_filter": false,
+   "output_columns": [
+    "date_month",
+    "customer_id",
+    "mrr",
+    "is_active",
+    "first_active_month",
+    "last_active_month",
+    "is_first_month",
+    "is_last_month"
+   ],
+   "unresolved_star": null,
+   "projects_star": false
+  },
+  "questions": {
+   "E1_grain_construct": {
+    "status": "ANSWERED",
+    "evidence": {
+     "construct": "base_relation",
+     "group_keys": []
+    }
+   },
+   "E2_join_structure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "joins": [],
+     "fanout_shape": {}
+    }
+   },
+   "E3_fanout_measure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "fanout_shape": {},
+     "columns_at_multiplied_grain": []
+    }
+   },
+   "E4_time_columns": {
+    "status": "ANSWERED",
+    "evidence": {
+     "time_columns": [],
+     "has_time_filter": false,
+     "window_functions": []
+    }
+   },
+   "E5_relation_lineage": {
+    "status": "ANSWERED",
+    "evidence": {
+     "source_relations": [
+      "customer_revenue_by_month"
+     ],
+     "output_columns": [
+      "date_month",
+      "customer_id",
+      "mrr",
+      "is_active",
+      "first_active_month",
+      "last_active_month",
+      "is_first_month",
+      "is_last_month"
+     ]
+    }
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "dbt-labs_mrr-playbook",
+  "path": "models/mrr.sql",
+  "bytes": 1318,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "dbt-labs_mrr-playbook",
+  "path": "models/customer_revenue_by_month.sql",
+  "bytes": 2301,
+  "stage": "analysed",
+  "refused_all": false,
+  "dialect": "snowflake",
+  "evidence": {
+   "set_operation": false,
+   "ctes": [
+    "customer_months",
+    "customers",
+    "final",
+    "joined",
+    "months",
+    "subscription_periods"
+   ],
+   "source_relations": [
+    "subscription_periods",
+    "util_months"
+   ],
+   "grain_construct": "window_dedup_or_base",
+   "grain_refusal": null,
+   "group_keys": [],
+   "joins": [],
+   "join_defects": {
+    "no_condition": 0,
+    "non_equality": 0,
+    "unqualified_key": 0,
+    "cross": 0
+   },
+   "fanout_shape": {},
+   "columns_at_multiplied_grain": [],
+   "fanout_columns_hidden_by_star": false,
+   "upstream_joins_unanalysed": true,
+   "aggregate_functions": [
+    "MAX",
+    "MIN"
+   ],
+   "window_functions": [
+    "MAX",
+    "MIN"
+   ],
+   "time_columns": [
+    "end_date",
+    "start_date"
+   ],
+   "has_time_filter": false,
+   "output_columns": [
+    "date_month",
+    "customer_id",
+    "mrr",
+    "is_active",
+    "first_active_month",
+    "last_active_month",
+    "is_first_month",
+    "is_last_month"
+   ],
+   "unresolved_star": null,
+   "projects_star": false
+  },
+  "questions": {
+   "E1_grain_construct": {
+    "status": "ANSWERED",
+    "evidence": {
+     "construct": "window_dedup_or_base",
+     "group_keys": []
+    }
+   },
+   "E2_join_structure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "joins": [],
+     "fanout_shape": {}
+    }
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "joins_upstream_of_grain_scope"
+   },
+   "E4_time_columns": {
+    "status": "ANSWERED",
+    "evidence": {
+     "time_columns": [
+      "end_date",
+      "start_date"
+     ],
+     "has_time_filter": false,
+     "window_functions": [
+      "MAX",
+      "MIN"
+     ]
+    }
+   },
+   "E5_relation_lineage": {
+    "status": "ANSWERED",
+    "evidence": {
+     "source_relations": [
+      "subscription_periods",
+      "util_months"
+     ],
+     "output_columns": [
+      "date_month",
+      "customer_id",
+      "mrr",
+      "is_active",
+      "first_active_month",
+      "last_active_month",
+      "is_first_month",
+      "is_last_month"
+     ]
+    }
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "gmyrianthous_dbt-dummy",
+  "path": "dbt_project/models/marts/cumulative_revenue.sql",
+  "bytes": 204,
+  "stage": "analysed",
+  "refused_all": false,
+  "dialect": "snowflake",
+  "evidence": {
+   "set_operation": false,
+   "ctes": [],
+   "source_relations": [
+    "int_revenue_by_date"
+   ],
+   "grain_construct": "window_dedup_or_base",
+   "grain_refusal": null,
+   "group_keys": [],
+   "joins": [],
+   "join_defects": {
+    "no_condition": 0,
+    "non_equality": 0,
+    "unqualified_key": 0,
+    "cross": 0
+   },
+   "fanout_shape": {},
+   "columns_at_multiplied_grain": [],
+   "fanout_columns_hidden_by_star": false,
+   "upstream_joins_unanalysed": false,
+   "aggregate_functions": [
+    "SUM"
+   ],
+   "window_functions": [
+    "SUM"
+   ],
+   "time_columns": [
+    "payment_date"
+   ],
+   "has_time_filter": false,
+   "output_columns": [
+    "payment_date",
+    "amount",
+    "SUM(amount) OVER (ORDER BY payment_date "
+   ],
+   "unresolved_star": null,
+   "projects_star": false
+  },
+  "questions": {
+   "E1_grain_construct": {
+    "status": "ANSWERED",
+    "evidence": {
+     "construct": "window_dedup_or_base",
+     "group_keys": []
+    }
+   },
+   "E2_join_structure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "joins": [],
+     "fanout_shape": {}
+    }
+   },
+   "E3_fanout_measure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "fanout_shape": {},
+     "columns_at_multiplied_grain": []
+    }
+   },
+   "E4_time_columns": {
+    "status": "ANSWERED",
+    "evidence": {
+     "time_columns": [
+      "payment_date"
+     ],
+     "has_time_filter": false,
+     "window_functions": [
+      "SUM"
+     ]
+    }
+   },
+   "E5_relation_lineage": {
+    "status": "ANSWERED",
+    "evidence": {
+     "source_relations": [
+      "int_revenue_by_date"
+     ],
+     "output_columns": [
+      "payment_date",
+      "amount",
+      "SUM(amount) OVER (ORDER BY payment_date "
+     ]
+    }
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "gmyrianthous_dbt-dummy",
+  "path": "dbt_project/models/intermediate/int_customers_per_store.sql",
+  "bytes": 104,
+  "stage": "analysed",
+  "refused_all": false,
+  "dialect": "snowflake",
+  "evidence": {
+   "set_operation": false,
+   "ctes": [],
+   "source_relations": [
+    "customer_base"
+   ],
+   "grain_construct": "group_by",
+   "grain_refusal": null,
+   "group_keys": [
+    "1"
+   ],
+   "joins": [],
+   "join_defects": {
+    "no_condition": 0,
+    "non_equality": 0,
+    "unqualified_key": 0,
+    "cross": 0
+   },
+   "fanout_shape": {},
+   "columns_at_multiplied_grain": [],
+   "fanout_columns_hidden_by_star": false,
+   "upstream_joins_unanalysed": false,
+   "aggregate_functions": [
+    "COUNT"
+   ],
+   "window_functions": [],
+   "time_columns": [],
+   "has_time_filter": false,
+   "output_columns": [
+    "store_id",
+    "total_customers"
+   ],
+   "unresolved_star": null,
+   "projects_star": false
+  },
+  "questions": {
+   "E1_grain_construct": {
+    "status": "ANSWERED",
+    "evidence": {
+     "construct": "group_by",
+     "group_keys": [
+      "1"
+     ]
+    }
+   },
+   "E2_join_structure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "joins": [],
+     "fanout_shape": {}
+    }
+   },
+   "E3_fanout_measure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "fanout_shape": {},
+     "columns_at_multiplied_grain": []
+    }
+   },
+   "E4_time_columns": {
+    "status": "ANSWERED",
+    "evidence": {
+     "time_columns": [],
+     "has_time_filter": false,
+     "window_functions": []
+    }
+   },
+   "E5_relation_lineage": {
+    "status": "ANSWERED",
+    "evidence": {
+     "source_relations": [
+      "customer_base"
+     ],
+     "output_columns": [
+      "store_id",
+      "total_customers"
+     ]
+    }
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "gmyrianthous_dbt-dummy",
+  "path": "dbt_project/models/intermediate/int_revenue_by_date.sql",
+  "bytes": 121,
+  "stage": "analysed",
+  "refused_all": false,
+  "dialect": "snowflake",
+  "evidence": {
+   "set_operation": false,
+   "ctes": [],
+   "source_relations": [
+    "stg_payment"
+   ],
+   "grain_construct": "group_by",
+   "grain_refusal": null,
+   "group_keys": [
+    "1"
+   ],
+   "joins": [],
+   "join_defects": {
+    "no_condition": 0,
+    "non_equality": 0,
+    "unqualified_key": 0,
+    "cross": 0
+   },
+   "fanout_shape": {},
+   "columns_at_multiplied_grain": [],
+   "fanout_columns_hidden_by_star": false,
+   "upstream_joins_unanalysed": false,
+   "aggregate_functions": [
+    "SUM"
+   ],
+   "window_functions": [],
+   "time_columns": [
+    "payment_date"
+   ],
+   "has_time_filter": false,
+   "output_columns": [
+    "payment_date",
+    "amount"
+   ],
+   "unresolved_star": null,
+   "projects_star": false
+  },
+  "questions": {
+   "E1_grain_construct": {
+    "status": "ANSWERED",
+    "evidence": {
+     "construct": "group_by",
+     "group_keys": [
+      "1"
+     ]
+    }
+   },
+   "E2_join_structure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "joins": [],
+     "fanout_shape": {}
+    }
+   },
+   "E3_fanout_measure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "fanout_shape": {},
+     "columns_at_multiplied_grain": []
+    }
+   },
+   "E4_time_columns": {
+    "status": "ANSWERED",
+    "evidence": {
+     "time_columns": [
+      "payment_date"
+     ],
+     "has_time_filter": false,
+     "window_functions": []
+    }
+   },
+   "E5_relation_lineage": {
+    "status": "ANSWERED",
+    "evidence": {
+     "source_relations": [
+      "stg_payment"
+     ],
+     "output_columns": [
+      "payment_date",
+      "amount"
+     ]
+    }
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "make-open-data_make-open-data",
+  "path": "1_data/prepare/geographie/commune_centroid_poste.sql",
+  "bytes": 2748,
+  "stage": "analysed",
+  "refused_all": false,
+  "dialect": "snowflake",
+  "evidence": {
+   "set_operation": false,
+   "ctes": [
+    "code_postal_et_commune_centrale",
+    "code_postal_et_commune_et_distance",
+    "code_postal_et_commune_et_rang_distance_centre",
+    "cog_postal_et_distance_moyenne",
+    "coordonnee_moyenne_par_code_postal",
+    "distinct_code_postal",
+    "join_departements",
+    "join_regions"
+   ],
+   "source_relations": [
+    "infos_communes",
+    "sources__cog_departements",
+    "sources__cog_poste",
+    "sources__cog_regions"
+   ],
+   "grain_construct": "base_relation_times_join_multiplicity",
+   "grain_refusal": null,
+   "group_keys": [],
+   "joins": [
+    {
+     "relation": "cog_regions",
+     "type": "LEFT",
+     "keys_text": [
+      "join_departements.code_region=cog_regions.code"
+     ]
+    }
+   ],
+   "join_defects": {
+    "no_condition": 0,
+    "non_equality": 0,
+    "unqualified_key": 0,
+    "cross": 0
+   },
+   "fanout_shape": {},
+   "columns_at_multiplied_grain": [],
+   "fanout_columns_hidden_by_star": false,
+   "upstream_joins_unanalysed": true,
+   "aggregate_functions": [
+    "AVG"
+   ],
+   "window_functions": [
+    "ROW_NUMBER"
+   ],
+   "time_columns": [],
+   "has_time_filter": false,
+   "output_columns": [
+    "code_postal",
+    "code_commune_centrale",
+    "nom_commune_centrale",
+    "code_departement",
+    "latitude_centrale_code_postal",
+    "longitude_centrale_code_postal",
+    "nom_departement",
+    "code_region",
+    "nom_region"
+   ],
+   "unresolved_star": null,
+   "projects_star": false
+  },
+  "questions": {
+   "E1_grain_construct": {
+    "status": "ANSWERED",
+    "evidence": {
+     "construct": "base_relation_times_join_multiplicity",
+     "group_keys": []
+    }
+   },
+   "E2_join_structure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "joins": [
+      {
+       "relation": "cog_regions",
+       "type": "LEFT",
+       "keys_text": [
+        "join_departements.code_region=cog_regions.code"
+       ]
+      }
+     ],
+     "fanout_shape": {}
+    }
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "joins_upstream_of_grain_scope"
+   },
+   "E4_time_columns": {
+    "status": "ANSWERED",
+    "evidence": {
+     "time_columns": [],
+     "has_time_filter": false,
+     "window_functions": [
+      "ROW_NUMBER"
+     ]
+    }
+   },
+   "E5_relation_lineage": {
+    "status": "ANSWERED",
+    "evidence": {
+     "source_relations": [
+      "infos_communes",
+      "sources__cog_departements",
+      "sources__cog_poste",
+      "sources__cog_regions"
+     ],
+     "output_columns": [
+      "code_postal",
+      "code_commune_centrale",
+      "nom_commune_centrale",
+      "code_departement",
+      "latitude_centrale_code_postal",
+      "longitude_centrale_code_postal",
+      "nom_departement",
+      "code_region",
+      "nom_region"
+     ]
+    }
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "make-open-data_make-open-data",
+  "path": "1_data/prepare/geographie/infos_postes.sql",
+  "bytes": 1754,
+  "stage": "analysed",
+  "refused_all": false,
+  "dialect": "snowflake",
+  "evidence": {
+   "set_operation": false,
+   "ctes": [
+    "format_cog_poste",
+    "join_departements",
+    "join_regions"
+   ],
+   "source_relations": [
+    "sources__cog_departements",
+    "sources__cog_poste",
+    "sources__cog_regions"
+   ],
+   "grain_construct": "base_relation_times_join_multiplicity",
+   "grain_refusal": null,
+   "group_keys": [],
+   "joins": [
+    {
+     "relation": "cog_regions",
+     "type": "LEFT",
+     "keys_text": [
+      "join_departements.code_region=cog_regions.code"
+     ]
+    }
+   ],
+   "join_defects": {
+    "no_condition": 0,
+    "non_equality": 0,
+    "unqualified_key": 0,
+    "cross": 0
+   },
+   "fanout_shape": {},
+   "columns_at_multiplied_grain": [],
+   "fanout_columns_hidden_by_star": false,
+   "upstream_joins_unanalysed": true,
+   "aggregate_functions": [],
+   "window_functions": [],
+   "time_columns": [],
+   "has_time_filter": false,
+   "output_columns": [
+    "code_postal",
+    "code_departement",
+    "nom_departement",
+    "code_region",
+    "nom_region"
+   ],
+   "unresolved_star": null,
+   "projects_star": false
+  },
+  "questions": {
+   "E1_grain_construct": {
+    "status": "ANSWERED",
+    "evidence": {
+     "construct": "base_relation_times_join_multiplicity",
+     "group_keys": []
+    }
+   },
+   "E2_join_structure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "joins": [
+      {
+       "relation": "cog_regions",
+       "type": "LEFT",
+       "keys_text": [
+        "join_departements.code_region=cog_regions.code"
+       ]
+      }
+     ],
+     "fanout_shape": {}
+    }
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "joins_upstream_of_grain_scope"
+   },
+   "E4_time_columns": {
+    "status": "ANSWERED",
+    "evidence": {
+     "time_columns": [],
+     "has_time_filter": false,
+     "window_functions": []
+    }
+   },
+   "E5_relation_lineage": {
+    "status": "ANSWERED",
+    "evidence": {
+     "source_relations": [
+      "sources__cog_departements",
+      "sources__cog_poste",
+      "sources__cog_regions"
+     ],
+     "output_columns": [
+      "code_postal",
+      "code_departement",
+      "nom_departement",
+      "code_region",
+      "nom_region"
+     ]
+    }
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "make-open-data_make-open-data",
+  "path": "1_data/intermediaires/recensement/habitat_renomee.sql",
+  "bytes": 442,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "target_or_env_config",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:target_or_env_config"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:target_or_env_config"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:target_or_env_config"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:target_or_env_config"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:target_or_env_config"
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "stacktonic-com_stacktonic-dbt-example-project",
+  "path": "models/marts/core/fct_sessions.sql",
+  "bytes": 1468,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "project_variable",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "stacktonic-com_stacktonic-dbt-example-project",
+  "path": "models/staging/google_analytics/stg_google_analytics__events.sql",
+  "bytes": 1287,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "project_variable",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "stacktonic-com_stacktonic-dbt-example-project",
+  "path": "models/marts/core/dim_customer.sql",
+  "bytes": 201,
+  "stage": "analysed",
+  "refused_all": false,
+  "dialect": "snowflake",
+  "evidence": {
+   "set_operation": false,
+   "ctes": [
+    "final",
+    "users"
+   ],
+   "source_relations": [
+    "int_sessions_customer__grouped"
+   ],
+   "grain_construct": "base_relation",
+   "grain_refusal": null,
+   "group_keys": [],
+   "joins": [],
+   "join_defects": {
+    "no_condition": 0,
+    "non_equality": 0,
+    "unqualified_key": 0,
+    "cross": 0
+   },
+   "fanout_shape": {},
+   "columns_at_multiplied_grain": [],
+   "fanout_columns_hidden_by_star": false,
+   "upstream_joins_unanalysed": false,
+   "aggregate_functions": [],
+   "window_functions": [],
+   "time_columns": [],
+   "has_time_filter": false,
+   "output_columns": [],
+   "unresolved_star": "star_over_external_relation",
+   "projects_star": true
+  },
+  "questions": {
+   "E1_grain_construct": {
+    "status": "ANSWERED",
+    "evidence": {
+     "construct": "base_relation",
+     "group_keys": []
+    }
+   },
+   "E2_join_structure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "joins": [],
+     "fanout_shape": {}
+    }
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "star_unresolved:star_over_external_relation"
+   },
+   "E4_time_columns": {
+    "status": "ANSWERED",
+    "evidence": {
+     "time_columns": [],
+     "has_time_filter": false,
+     "window_functions": []
+    }
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "star_unresolved:star_over_external_relation"
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "make-open-data_make-open-data",
+  "path": "1_data/intermediaires/recensement/demographie_renomee.sql",
+  "bytes": 446,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "target_or_env_config",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:target_or_env_config"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:target_or_env_config"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:target_or_env_config"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:target_or_env_config"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:target_or_env_config"
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "make-open-data_make-open-data",
+  "path": "1_data/prepare/recensement/activite/activite_communes.sql",
+  "bytes": 643,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "make-open-data_make-open-data",
+  "path": "1_data/intermediaires/geographie/postes_communes.sql",
+  "bytes": 343,
+  "stage": "analysed",
+  "refused_all": false,
+  "dialect": "snowflake",
+  "evidence": {
+   "set_operation": false,
+   "ctes": [
+    "unique_codes_communes_postaux"
+   ],
+   "source_relations": [
+    "sources__cog_poste"
+   ],
+   "grain_construct": "distinct",
+   "grain_refusal": null,
+   "group_keys": [],
+   "joins": [],
+   "join_defects": {
+    "no_condition": 0,
+    "non_equality": 0,
+    "unqualified_key": 0,
+    "cross": 0
+   },
+   "fanout_shape": {},
+   "columns_at_multiplied_grain": [],
+   "fanout_columns_hidden_by_star": false,
+   "upstream_joins_unanalysed": false,
+   "aggregate_functions": [],
+   "window_functions": [],
+   "time_columns": [],
+   "has_time_filter": false,
+   "output_columns": [
+    "code_postal",
+    "code_commune_insee"
+   ],
+   "unresolved_star": null,
+   "projects_star": false
+  },
+  "questions": {
+   "E1_grain_construct": {
+    "status": "ANSWERED",
+    "evidence": {
+     "construct": "distinct",
+     "group_keys": []
+    }
+   },
+   "E2_join_structure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "joins": [],
+     "fanout_shape": {}
+    }
+   },
+   "E3_fanout_measure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "fanout_shape": {},
+     "columns_at_multiplied_grain": []
+    }
+   },
+   "E4_time_columns": {
+    "status": "ANSWERED",
+    "evidence": {
+     "time_columns": [],
+     "has_time_filter": false,
+     "window_functions": []
+    }
+   },
+   "E5_relation_lineage": {
+    "status": "ANSWERED",
+    "evidence": {
+     "source_relations": [
+      "sources__cog_poste"
+     ],
+     "output_columns": [
+      "code_postal",
+      "code_commune_insee"
+     ]
+    }
+   }
+  }
+ },
+ {
+  "stratum": "application",
+  "repo": "stacktonic-com_stacktonic-dbt-example-project",
+  "path": "models/marts/marketing/fct_channel_performance.sql",
+  "bytes": 629,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "project_variable",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_dbt-event-logging",
+  "path": "models/default/stg_dbt_model_deployments.sql",
+  "bytes": 828,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_dbt-event-logging",
+  "path": "models/bigquery/stg_dbt_deployments.sql",
+  "bytes": 666,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_dbt-event-logging",
+  "path": "models/stg_dbt_audit_log.sql",
+  "bytes": 300,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_dbt-event-logging",
+  "path": "models/default/stg_dbt_deployments.sql",
+  "bytes": 695,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_snowplow",
+  "path": "models/base/snowplow_base_events.sql",
+  "bytes": 736,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "project_variable",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_snowplow",
+  "path": "models/sessions/default/snowplow_sessions_tmp.sql",
+  "bytes": 5082,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_snowplow",
+  "path": "models/page_views/optional/snowplow_web_ua_parser_context.sql",
+  "bytes": 1250,
+  "stage": "analysed",
+  "refused_all": false,
+  "dialect": "snowflake",
+  "evidence": {
+   "set_operation": false,
+   "ctes": [
+    "duplicated",
+    "prep",
+    "ua_parser_context",
+    "web_page_context"
+   ],
+   "source_relations": [
+    "snowplow_base_useragent_context",
+    "snowplow_web_page_context"
+   ],
+   "grain_construct": "group_by",
+   "grain_refusal": null,
+   "group_keys": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13"
+   ],
+   "joins": [
+    {
+     "relation": "wp",
+     "type": "INNER",
+     "keys_text": [
+      "ua.root_id=wp.root_id"
+     ]
+    }
+   ],
+   "join_defects": {
+    "no_condition": 0,
+    "non_equality": 0,
+    "unqualified_key": 0,
+    "cross": 0
+   },
+   "fanout_shape": {},
+   "columns_at_multiplied_grain": [],
+   "fanout_columns_hidden_by_star": false,
+   "upstream_joins_unanalysed": false,
+   "aggregate_functions": [
+    "COUNT"
+   ],
+   "window_functions": [],
+   "time_columns": [],
+   "has_time_filter": false,
+   "output_columns": [
+    "page_view_id",
+    "useragent_family",
+    "useragent_major",
+    "useragent_minor",
+    "useragent_patch",
+    "useragent_version",
+    "os_family",
+    "os_major",
+    "os_minor",
+    "os_patch",
+    "os_patch_minor",
+    "os_version",
+    "device_family"
+   ],
+   "unresolved_star": null,
+   "projects_star": false
+  },
+  "questions": {
+   "E1_grain_construct": {
+    "status": "ANSWERED",
+    "evidence": {
+     "construct": "group_by",
+     "group_keys": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13"
+     ]
+    }
+   },
+   "E2_join_structure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "joins": [
+      {
+       "relation": "wp",
+       "type": "INNER",
+       "keys_text": [
+        "ua.root_id=wp.root_id"
+       ]
+      }
+     ],
+     "fanout_shape": {}
+    }
+   },
+   "E3_fanout_measure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "fanout_shape": {},
+     "columns_at_multiplied_grain": []
+    }
+   },
+   "E4_time_columns": {
+    "status": "ANSWERED",
+    "evidence": {
+     "time_columns": [],
+     "has_time_filter": false,
+     "window_functions": []
+    }
+   },
+   "E5_relation_lineage": {
+    "status": "ANSWERED",
+    "evidence": {
+     "source_relations": [
+      "snowplow_base_useragent_context",
+      "snowplow_web_page_context"
+     ],
+     "output_columns": [
+      "page_view_id",
+      "useragent_family",
+      "useragent_major",
+      "useragent_minor",
+      "useragent_patch",
+      "useragent_version",
+      "os_family",
+      "os_major",
+      "os_minor",
+      "os_patch",
+      "os_patch_minor",
+      "os_version",
+      "device_family"
+     ]
+    }
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_snowplow",
+  "path": "models/page_views/default/snowplow_web_page_context.sql",
+  "bytes": 751,
+  "stage": "analysed",
+  "refused_all": false,
+  "dialect": "snowflake",
+  "evidence": {
+   "set_operation": false,
+   "ctes": [
+    "duplicated",
+    "prep",
+    "web_page_context"
+   ],
+   "source_relations": [
+    "snowplow_base_web_page_context"
+   ],
+   "grain_construct": "group_by",
+   "grain_refusal": null,
+   "group_keys": [
+    "1",
+    "2"
+   ],
+   "joins": [],
+   "join_defects": {
+    "no_condition": 0,
+    "non_equality": 0,
+    "unqualified_key": 0,
+    "cross": 0
+   },
+   "fanout_shape": {},
+   "columns_at_multiplied_grain": [],
+   "fanout_columns_hidden_by_star": false,
+   "upstream_joins_unanalysed": false,
+   "aggregate_functions": [
+    "COUNT"
+   ],
+   "window_functions": [],
+   "time_columns": [],
+   "has_time_filter": false,
+   "output_columns": [
+    "root_id",
+    "page_view_id"
+   ],
+   "unresolved_star": null,
+   "projects_star": false
+  },
+  "questions": {
+   "E1_grain_construct": {
+    "status": "ANSWERED",
+    "evidence": {
+     "construct": "group_by",
+     "group_keys": [
+      "1",
+      "2"
+     ]
+    }
+   },
+   "E2_join_structure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "joins": [],
+     "fanout_shape": {}
+    }
+   },
+   "E3_fanout_measure": {
+    "status": "ANSWERED",
+    "evidence": {
+     "fanout_shape": {},
+     "columns_at_multiplied_grain": []
+    }
+   },
+   "E4_time_columns": {
+    "status": "ANSWERED",
+    "evidence": {
+     "time_columns": [],
+     "has_time_filter": false,
+     "window_functions": []
+    }
+   },
+   "E5_relation_lineage": {
+    "status": "ANSWERED",
+    "evidence": {
+     "source_relations": [
+      "snowplow_base_web_page_context"
+     ],
+     "output_columns": [
+      "root_id",
+      "page_view_id"
+     ]
+    }
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_hubspot",
+  "path": "models/staging/tmp/stg_hubspot__email_event_status_change_tmp.sql",
+  "bytes": 347,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_hubspot",
+  "path": "models/staging/stg_hubspot__email_event_dropped.sql",
+  "bytes": 1094,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_hubspot",
+  "path": "models/marketing/hubspot__marketing_event_performance.sql",
+  "bytes": 5083,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "project_variable",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_hubspot",
+  "path": "models/staging/tmp/stg_hubspot__engagement_email_tmp.sql",
+  "bytes": 324,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_netsuite",
+  "path": "models/netsuite2/staging/tmp/stg_netsuite2__accounting_period_fiscal_cal_tmp.sql",
+  "bytes": 379,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_netsuite",
+  "path": "models/netsuite/staging/stg_netsuite__customers.sql",
+  "bytes": 1493,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_netsuite",
+  "path": "models/netsuite/staging/tmp/stg_netsuite__accounts_tmp.sql",
+  "bytes": 122,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "project_variable",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_netsuite",
+  "path": "models/netsuite2/staging/stg_netsuite2__accounting_books.sql",
+  "bytes": 1341,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_shopify",
+  "path": "models/graphql/staging/tmp/stg_shopify_gql__shop_tmp.sql",
+  "bytes": 795,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "project_variable",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_shopify",
+  "path": "models/graphql/staging/tmp/stg_shopify_gql__inventory_level_tmp.sql",
+  "bytes": 817,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "project_variable",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:project_variable"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_shopify",
+  "path": "models/rest/metafields/shopify__product_metafields.sql",
+  "bytes": 341,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_shopify",
+  "path": "models/graphql/staging/stg_shopify_gql__customer_address.sql",
+  "bytes": 1399,
+  "stage": "templating",
+  "refused_all": true,
+  "reason": "unresolved_templating",
+  "detail": "undefined_macro",
+  "questions": {
+   "E1_grain_construct": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E2_join_structure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E3_fanout_measure": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E4_time_columns": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   },
+   "E5_relation_lineage": {
+    "status": "REFUSED",
+    "reason": "unresolved_templating:undefined_macro"
+   }
+  }
+ }
+]

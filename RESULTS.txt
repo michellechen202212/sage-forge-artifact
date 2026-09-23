@@ -1,0 +1,54 @@
+corpus N=40  pinned dialect=snowflake  sqlglot=30.18.0
+
+--- ALL: N=40 ---
+  templating resolved + parsed : 14/40
+  templating REFUSE reasons    : {'undefined_macro': 16, 'target_or_env_config': 2, 'project_variable': 8}
+  evidence questions answered  : 59/200 (30%)
+     E1_grain_construct    14/40
+     E2_join_structure     14/40
+     E3_fanout_measure      7/40  | beyond templating: star_unresolved:star_over_external_relation=4, joins_upstream_of_grain_scope=3
+     E4_time_columns       14/40
+     E5_relation_lineage   10/40  | beyond templating: star_unresolved:star_over_external_relation=4
+  among analysed models        : 59/70 (84%)
+
+--- application: N=20 ---
+  templating resolved + parsed : 12/20
+  templating REFUSE reasons    : {'undefined_macro': 3, 'target_or_env_config': 2, 'project_variable': 3}
+  evidence questions answered  : 49/100 (49%)
+     E1_grain_construct    12/20
+     E2_join_structure     12/20
+     E3_fanout_measure      5/20  | beyond templating: star_unresolved:star_over_external_relation=4, joins_upstream_of_grain_scope=3
+     E4_time_columns       12/20
+     E5_relation_lineage    8/20  | beyond templating: star_unresolved:star_over_external_relation=4
+  among analysed models        : 49/60 (82%)
+
+--- package: N=20 ---
+  templating resolved + parsed : 2/20
+  templating REFUSE reasons    : {'undefined_macro': 13, 'project_variable': 5}
+  evidence questions answered  : 10/100 (10%)
+     E1_grain_construct     2/20
+     E2_join_structure      2/20
+     E3_fanout_measure      2/20
+     E4_time_columns        2/20
+     E5_relation_lineage    2/20
+  among analysed models        : 10/10 (100%)
+
+multi-child join shape on one parent key: 0/14 analysed corpus models
+
+=== paper table ===
+slice                     analysed    answered
+All                          14/40      59/200
+Application repos            12/20      49/100
+Package repos                 2/20      10/100
+Analysed models only             -       59/70
+
+130/141 refusals arose before SQL analysis, during unresolved dbt templating.
+whole pinned pool: 662 eligible, 59 analysable, 8 exhibit the fan-out shape
+   [business key        ] infos_communes.sql                             key=denomalise_cog.code_commune  E3=REFUSED
+   [business key        ] order_items.sql                                key=order_items.product_id  E3=REFUSED
+   [union discriminator ] int_shopify_gql__emails_order_aggregates.sql   key=orders.source_relation  E3=REFUSED
+   [union discriminator ] int_shopify_gql__orders_order_refunds.sql      key=order_line_refunds.source_relation  E3=ANSWERED
+   [union discriminator ] int_shopify_gql__product_order_line_aggregat   key=order_lines.source_relation  E3=ANSWERED
+   [business key        ] int_shopify__discounts__abandoned_checkouts.   key=abandoned_checkout_discount_code.checkout_id  E3=ANSWERED
+   [union discriminator ] int_shopify__product__order_line_aggregates.   key=order_lines.source_relation  E3=ANSWERED
+   [union discriminator ] shopify__orders__order_refunds.sql             key=order_line_refunds.source_relation  E3=ANSWERED

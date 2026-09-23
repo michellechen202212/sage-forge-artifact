@@ -1,0 +1,242 @@
+[
+ {
+  "stratum": "application",
+  "repo": "dbt-labs_attribution-playbook",
+  "path": "models/attribution_touches.sql",
+  "bytes": 1598
+ },
+ {
+  "stratum": "application",
+  "repo": "dbt-labs_jaffle-shop",
+  "path": "models/staging/stg_locations.sql",
+  "bytes": 395
+ },
+ {
+  "stratum": "application",
+  "repo": "dbt-labs_jaffle-shop",
+  "path": "models/marts/products.sql",
+  "bytes": 92
+ },
+ {
+  "stratum": "application",
+  "repo": "dbt-labs_jaffle-shop",
+  "path": "models/marts/supplies.sql",
+  "bytes": 92
+ },
+ {
+  "stratum": "application",
+  "repo": "dbt-labs_mrr-playbook",
+  "path": "models/customer_churn_month.sql",
+  "bytes": 465
+ },
+ {
+  "stratum": "application",
+  "repo": "dbt-labs_mrr-playbook",
+  "path": "models/mrr.sql",
+  "bytes": 1318
+ },
+ {
+  "stratum": "application",
+  "repo": "dbt-labs_mrr-playbook",
+  "path": "models/customer_revenue_by_month.sql",
+  "bytes": 2301
+ },
+ {
+  "stratum": "application",
+  "repo": "gmyrianthous_dbt-dummy",
+  "path": "dbt_project/models/marts/cumulative_revenue.sql",
+  "bytes": 204
+ },
+ {
+  "stratum": "application",
+  "repo": "gmyrianthous_dbt-dummy",
+  "path": "dbt_project/models/intermediate/int_customers_per_store.sql",
+  "bytes": 104
+ },
+ {
+  "stratum": "application",
+  "repo": "gmyrianthous_dbt-dummy",
+  "path": "dbt_project/models/intermediate/int_revenue_by_date.sql",
+  "bytes": 121
+ },
+ {
+  "stratum": "application",
+  "repo": "make-open-data_make-open-data",
+  "path": "1_data/prepare/geographie/commune_centroid_poste.sql",
+  "bytes": 2748
+ },
+ {
+  "stratum": "application",
+  "repo": "make-open-data_make-open-data",
+  "path": "1_data/prepare/geographie/infos_postes.sql",
+  "bytes": 1754
+ },
+ {
+  "stratum": "application",
+  "repo": "make-open-data_make-open-data",
+  "path": "1_data/intermediaires/recensement/habitat_renomee.sql",
+  "bytes": 442
+ },
+ {
+  "stratum": "application",
+  "repo": "stacktonic-com_stacktonic-dbt-example-project",
+  "path": "models/marts/core/fct_sessions.sql",
+  "bytes": 1468
+ },
+ {
+  "stratum": "application",
+  "repo": "stacktonic-com_stacktonic-dbt-example-project",
+  "path": "models/staging/google_analytics/stg_google_analytics__events.sql",
+  "bytes": 1287
+ },
+ {
+  "stratum": "application",
+  "repo": "stacktonic-com_stacktonic-dbt-example-project",
+  "path": "models/marts/core/dim_customer.sql",
+  "bytes": 201
+ },
+ {
+  "stratum": "application",
+  "repo": "make-open-data_make-open-data",
+  "path": "1_data/intermediaires/recensement/demographie_renomee.sql",
+  "bytes": 446
+ },
+ {
+  "stratum": "application",
+  "repo": "make-open-data_make-open-data",
+  "path": "1_data/prepare/recensement/activite/activite_communes.sql",
+  "bytes": 643
+ },
+ {
+  "stratum": "application",
+  "repo": "make-open-data_make-open-data",
+  "path": "1_data/intermediaires/geographie/postes_communes.sql",
+  "bytes": 343
+ },
+ {
+  "stratum": "application",
+  "repo": "stacktonic-com_stacktonic-dbt-example-project",
+  "path": "models/marts/marketing/fct_channel_performance.sql",
+  "bytes": 629
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_dbt-event-logging",
+  "path": "models/default/stg_dbt_model_deployments.sql",
+  "bytes": 828
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_dbt-event-logging",
+  "path": "models/bigquery/stg_dbt_deployments.sql",
+  "bytes": 666
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_dbt-event-logging",
+  "path": "models/stg_dbt_audit_log.sql",
+  "bytes": 300
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_dbt-event-logging",
+  "path": "models/default/stg_dbt_deployments.sql",
+  "bytes": 695
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_snowplow",
+  "path": "models/base/snowplow_base_events.sql",
+  "bytes": 736
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_snowplow",
+  "path": "models/sessions/default/snowplow_sessions_tmp.sql",
+  "bytes": 5082
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_snowplow",
+  "path": "models/page_views/optional/snowplow_web_ua_parser_context.sql",
+  "bytes": 1250
+ },
+ {
+  "stratum": "package",
+  "repo": "dbt-labs_snowplow",
+  "path": "models/page_views/default/snowplow_web_page_context.sql",
+  "bytes": 751
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_hubspot",
+  "path": "models/staging/tmp/stg_hubspot__email_event_status_change_tmp.sql",
+  "bytes": 347
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_hubspot",
+  "path": "models/staging/stg_hubspot__email_event_dropped.sql",
+  "bytes": 1094
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_hubspot",
+  "path": "models/marketing/hubspot__marketing_event_performance.sql",
+  "bytes": 5083
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_hubspot",
+  "path": "models/staging/tmp/stg_hubspot__engagement_email_tmp.sql",
+  "bytes": 324
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_netsuite",
+  "path": "models/netsuite2/staging/tmp/stg_netsuite2__accounting_period_fiscal_cal_tmp.sql",
+  "bytes": 379
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_netsuite",
+  "path": "models/netsuite/staging/stg_netsuite__customers.sql",
+  "bytes": 1493
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_netsuite",
+  "path": "models/netsuite/staging/tmp/stg_netsuite__accounts_tmp.sql",
+  "bytes": 122
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_netsuite",
+  "path": "models/netsuite2/staging/stg_netsuite2__accounting_books.sql",
+  "bytes": 1341
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_shopify",
+  "path": "models/graphql/staging/tmp/stg_shopify_gql__shop_tmp.sql",
+  "bytes": 795
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_shopify",
+  "path": "models/graphql/staging/tmp/stg_shopify_gql__inventory_level_tmp.sql",
+  "bytes": 817
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_shopify",
+  "path": "models/rest/metafields/shopify__product_metafields.sql",
+  "bytes": 341
+ },
+ {
+  "stratum": "package",
+  "repo": "fivetran_dbt_shopify",
+  "path": "models/graphql/staging/stg_shopify_gql__customer_address.sql",
+  "bytes": 1399
+ }
+]
